@@ -17,3 +17,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Route::middleware('auth:api')->group(function () {
+//    Route::get('/emp_com',[\App\Http\Controllers\EmpComController::class,'getData']);
+//});
+Route::get('/emp_com',[\App\Http\Controllers\EmpComController::class,'getData']);
+
+

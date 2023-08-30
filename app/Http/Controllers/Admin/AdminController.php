@@ -12,11 +12,6 @@ class AdminController extends Controller
     public function index(){
         $employees = Employee::count();
         $companies = Company::count();
-//        $file = public_path().'/storage/uploads/2.png';
-//        $headers = array(
-//            'Content-Type: application/png',
-//        );
-//        return response()->download($file, 'filename.pdf', $headers);
         return view('admin.admin-page',['employees'=>$employees,'companies'=>$companies]);
     }
 

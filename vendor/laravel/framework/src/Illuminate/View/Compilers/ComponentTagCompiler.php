@@ -308,9 +308,9 @@ class ComponentTagCompiler
             return $component;
         }
 
-        throw new InvalidArgumentException(
-            "Unable to locate a class or view for component [{$component}]."
-        );
+//        throw new InvalidArgumentException(
+//            "Unable to locate a class or view for component [{$component}]."
+//        );
     }
 
     /**

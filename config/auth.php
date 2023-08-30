@@ -43,7 +43,12 @@ return [
         'employee'=>[
             'driver'=>'session',
             'provider'=>'employees'
-        ]
+        ],
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+        ],
+
     ],
 
     /*
