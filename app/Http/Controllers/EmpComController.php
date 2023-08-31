@@ -11,36 +11,33 @@ use Illuminate\Support\Facades\Session;
 
 class EmpComController extends Controller
 {
-
-    public function loginApi(Request $request){
+    public function loginApi(Request $request)
+    {
         $email = $request['email'];
         $password = $request['password'];
         $user = User::find(1);
-        if ($user->email == $email && Hash::check($password, $user->password)){
+        if ($user->email == $email && Hash::check($password, $user->password)) {
             $token = $user->createToken('auth_token')->accessToken;
             return response()->json([
-               'token'=>$token,
-               'status'=>'success',
-                'user'=>$user,
-                'message'=>"User Authorized",
+                'token' => $token,
+                'status' => 'success',
+                'user' => $user,
+                'message' => "User Authorized",
             ]);
-        }
-        else{
+        } else {
             return response()->json([
-                'status'=>0,
-                'message'=>"User Not Authorized",
+                'status' => 0,
+                'message' => "User Not Authorized",
             ]);
         }
     }
 
-
-
-    public function getData(){
+    public function getData()
+    {
         $employees = Employee::all();
-
-        $employeeData = $employees->map(function($employee){
-            return[
-                'id'=>$employee->id,
+        $employeeData = $employees->map(function ($employee) {
+            return [
+                'id' => $employee->id,
                 'first_name' => $employee->first_name,
                 'last_name' => $employee->last_name,
                 'companies' => $employee->companies->toArray()

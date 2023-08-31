@@ -11,10 +11,6 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-//Route::middleware('auth')->group(function () {
-//    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
-//});
-
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::post('/admin/logout', [LoginController::class, 'userLogout'])->name('user.logout');
 
@@ -48,19 +44,14 @@ Route::group(['prefix' => 'employee'], function () {
 
 Route::post('register-admin',[AdminController::class,'register'])->name('register-admin');
 
-
-
-
-//Route::post('login-admin',[AdminController::class,'login'])->name('login-admin');
 Route::middleware('checkLogin')->group(function () {
-    Route::get('/admin-home', [AdminController::class, 'index'])->name('admin.index');
+    Route::get('/', [AdminController::class, 'index'])->name('admin.index');
 });
-//Route::get('login-form',[AdminController::class,'loginForm'])->name('login-form');
 
 Route::middleware('preventLogin')->group(function () {
     Route::get('login-form',[AdminController::class,'loginForm'])->name('login-form');
     Route::post('login-admin',[AdminController::class,'login'])->name('login-admin');
 });
 
-//preventLogin
+
 
