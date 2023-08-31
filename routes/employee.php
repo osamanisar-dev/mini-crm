@@ -5,7 +5,7 @@ use App\Http\Controllers\AdminChat\ChatController;
 use App\Http\Controllers\Employee\EmployeeController;
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth')->prefix('/admin/employee')->group(function () {
+Route::middleware('checkLogin')->prefix('/admin/employee')->group(function () {
     Route::get('/create', [EmployeeController::class, 'create'])->name('employee.create');
     Route::post('/store', [EmployeeController::class, 'store'])->name('employee.store');
     Route::get('/view', [EmployeeController::class, 'view'])->name('employee.view');
