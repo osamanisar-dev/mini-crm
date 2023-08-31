@@ -21,6 +21,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //Route::middleware('auth:api')->group(function () {
 //    Route::get('/emp_com',[\App\Http\Controllers\EmpComController::class,'getData']);
 //});
-Route::get('/emp_com',[\App\Http\Controllers\EmpComController::class,'getData']);
+//Route::get('/emp_com',[\App\Http\Controllers\EmpComController::class,'getData']);
 
 
+Route::post('/login_api',[\App\Http\Controllers\EmpComController::class,'loginApi']);
+Route::middleware('auth:api')->group(function(){
+    Route::get('/emp_com',[\App\Http\Controllers\EmpComController::class,'getData']);
+});
