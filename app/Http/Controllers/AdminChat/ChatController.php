@@ -42,7 +42,7 @@ class ChatController extends Controller
         broadcast(new PusherBroadcast($request->get('message'), $request->get('employee_id'), $employee_name))->toOthers();
 
         $message->employee_id = $request['employee_id'];
-        $message->user_id = Auth::user()->id;
+        $message->user_id = session('user')->id;
         $message->message = $request['message'];
         $message->sender_type = 'admin';
         $message->save();
