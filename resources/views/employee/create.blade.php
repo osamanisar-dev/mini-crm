@@ -73,16 +73,11 @@
                     </span><br>
                     </div>
                 </div>
-{{--@dd($companies)--}}
                 <div class="form-group col-md-6">
                             <label class="form-label select-label"><strong>Select Company :</strong></label><br/>
                             <select class="form-control selectpicker" multiple data-live-search="true" id="company_id" name="company_id[]" data-max-options="3">
                                  @foreach($companies as $company)
-                                    <option value="{{ $company->id }}"
-{{--                                    @if(old('company_id') == $company->id)--}}
-{{--                                        selected--}}
-{{--                                    @endif--}}
-                                    >
+                                    <option value="{{ $company->id }}">
                                       {{ $company->name }}
                                     </option>
                                 @endforeach
